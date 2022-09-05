@@ -86,13 +86,15 @@ module.exports = {
         /* return res.send(req.body) */
         let {nombre,marca,img_url,precio,categoria_id} = req.body
 
+        /* return res.send(req.session.usuarioLogueado) */
+
         db.Producto.create({
             nombre: nombre,
             marca: marca,
             img_url: img_url,
             precio: +precio,
-            categoria_id: +categoria_id
-            
+            categoria_id: +categoria_id,
+            usuario_id : req.session.usuarioLogueado.id
         })
         .then((producto) => {
             

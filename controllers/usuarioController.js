@@ -96,8 +96,8 @@ module.exports = {
         if (req.session.usuarioLogueado != undefined) {
             res.redirect("/");
         }
-        req.session.usuarioLogueado = undefined;
-        res.clearCookie('idUsuario');
+        req.session.destroy()
+        res.clearCookie('usuarioLogueadoId', null, {maxAge: -1});
         return res.redirect('/');
     },
 
